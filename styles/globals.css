@@ -1,0 +1,518 @@
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600&family=Montserrat:wght@300;400;500;600;700&display=swap");
+
+:root {
+  --ltg-bg: #0a0a0a;
+  --ltg-bg-elevated: #111111;
+  --ltg-gold: #c9a84c;
+  --ltg-gold-soft: #e0c978;
+  --ltg-text: #f5f5f5;
+  --ltg-muted: #a0a0a0;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: auto;
+  background: var(--ltg-bg);
+}
+
+.ltg-body {
+  min-height: 100vh;
+  background: radial-gradient(circle at top, #141414 0, #050505 60%, #000 100%);
+  color: var(--ltg-text);
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Grain overlay */
+.ltg-body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.22;
+  mix-blend-mode: soft-light;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 160 160' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='noStitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.6'/%3E%3C/svg%3E");
+  z-index: 0;
+}
+
+main {
+  position: relative;
+  z-index: 1;
+}
+
+.ltg-serif {
+  font-family: "Cormorant Garamond", "Times New Roman", serif;
+}
+
+.ltg-sans {
+  font-family: "Montserrat", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+}
+
+.ltg-gold {
+  color: var(--ltg-gold);
+}
+
+.ltg-gold-border {
+  border-color: var(--ltg-gold) !important;
+}
+
+.ltg-section {
+  padding: 6rem 1rem;
+  position: relative;
+}
+
+@media (min-width: 992px) {
+  .ltg-section {
+    padding: 7rem 0;
+  }
+}
+
+.ltg-section-divider {
+  width: 120px;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ltg-gold),
+    transparent
+  );
+  margin: 0 auto 3rem auto;
+}
+
+.ltg-section-title {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.85rem;
+  color: var(--ltg-gold-soft);
+}
+
+.ltg-section-heading {
+  font-size: 2.4rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+@media (min-width: 992px) {
+  .ltg-section-heading {
+    font-size: 2.8rem;
+  }
+}
+
+/* Navbar */
+.ltg-navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 50;
+  transition: background 0.4s ease, box-shadow 0.4s ease,
+    backdrop-filter 0.4s ease, border-bottom-color 0.4s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.ltg-navbar-inner {
+  padding-block: 0.9rem;
+}
+
+.ltg-navbar-scrolled {
+  background: rgba(10, 10, 10, 0.82);
+  backdrop-filter: blur(18px);
+  border-bottom-color: rgba(201, 168, 76, 0.2);
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.8);
+}
+
+.ltg-logo {
+  font-family: "Cormorant Garamond", serif;
+  font-size: 1.6rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+}
+
+.ltg-logo span {
+  color: var(--ltg-gold);
+}
+
+.ltg-nav-link {
+  font-size: 0.92rem;
+   letter-spacing: 0.18em;
+  color: #e0e0e0 !important;
+  position: relative;
+}
+
+.ltg-nav-link::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.25rem;
+  width: 0;
+  height: 1px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ltg-gold),
+    transparent
+  );
+  transition: width 0.3s ease;
+}
+
+.ltg-nav-link:hover::after {
+  width: 100%;
+}
+
+.ltg-outline-gold-btn {
+  border-radius: 999px;
+  padding-inline: 1.8rem;
+  padding-block: 0.55rem;
+  border: 1px solid rgba(201, 168, 76, 0.7);
+  color: var(--ltg-gold-soft);
+  background: transparent;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-size: 0.75rem;
+}
+
+.ltg-outline-gold-btn:hover {
+  background: rgba(201, 168, 76, 0.12);
+  color: #fff;
+}
+
+.ltg-cta-gold-btn {
+  border-radius: 999px;
+  padding-inline: 1.8rem;
+  padding-block: 0.7rem;
+  border: 1px solid var(--ltg-gold);
+  background: linear-gradient(
+    135deg,
+    #c9a84c 0%,
+    #f1d27a 40%,
+    #b2903a 80%
+  );
+  color: #1a1204;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  font-weight: 600;
+  font-size: 0.78rem;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.7),
+    0 18px 35px rgba(0, 0, 0, 0.9);
+}
+
+.ltg-cta-gold-btn:hover {
+  filter: brightness(1.05);
+  color: #120c02;
+}
+
+/* Hero */
+.ltg-hero {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 6rem;
+  color: #f8f8f8;
+}
+
+@media (min-width: 992px) {
+  .ltg-hero {
+    padding-top: 7rem;
+  }
+}
+/* REMOVE z-index: -1 from both of these */
+
+.ltg-hero-slides {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  z-index: 0; /* was -1 — was going behind the section itself */
+}
+
+.ltg-hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 0.9s ease-in-out;
+}
+
+.ltg-hero-slide.active {
+  opacity: 1;
+}
+
+.ltg-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+      circle at top,
+      rgba(0, 0, 0, 0.12),
+      rgba(0, 0, 0, 0.7)
+    ),
+    linear-gradient(to bottom, rgba(0, 0, 0, 0.55), rgba(0, 0, 0, 0.82));
+  z-index: 1; /* was -1 */
+}
+
+/* The section itself needs a stacking context */
+.ltg-hero {
+  min-height: 100vh;
+  position: relative;
+  padding-top: 6rem;
+  color: #f8f8f8;
+  overflow: hidden; /* ADD THIS — prevents slide bleed */
+}
+
+/* Content must sit above slides + overlay */
+.ltg-hero .container {
+  position: relative;
+  z-index: 2; /* ADD THIS */
+}
+
+/* Dots bar must also be above */
+.ltg-hero .position-absolute.bottom-0 {
+  z-index: 2; /* ADD THIS */
+}
+
+/* Scroll indicator above everything */
+.ltg-hero-scroll-indicator {
+  position: absolute;
+  right: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 2; /* ADD THIS */
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.ltg-hero-scroll-line {
+  width: 1px;
+  height: 60px;
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0.1),
+    var(--ltg-gold)
+  );
+  overflow: hidden;
+  position: relative;
+}
+
+.ltg-hero-scroll-line::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--ltg-gold),
+    rgba(255, 255, 255, 0.1)
+  );
+  animation: ltg-scroll-line 2.6s linear infinite;
+}
+
+@keyframes ltg-scroll-line {
+  0% {
+    transform: translateY(0%);
+  }
+  100% {
+    transform: translateY(200%);
+  }
+}
+
+/* Cards and sections */
+.ltg-card {
+  background: radial-gradient(circle at top left, #1a1a1a, #050505);
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.04);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.8);
+  position: relative;
+  overflow: hidden;
+}
+
+.ltg-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 255, 255, 0.04),
+    transparent 60%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.ltg-card:hover::before {
+  opacity: 1;
+}
+
+.ltg-card-hover-border {
+  border-radius: 1.1rem;
+  border: 1px solid transparent;
+  transition: border-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.ltg-card-hover-border:hover {
+  border-color: rgba(201, 168, 76, 0.7);
+  transform: translateY(-6px);
+  box-shadow: 0 28px 60px rgba(0, 0, 0, 0.95);
+}
+
+.ltg-service-number {
+  font-size: 3.6rem;
+  opacity: 0.06;
+  position: absolute;
+  right: 1.4rem;
+  top: 0.6rem;
+}
+
+.ltg-underline-animate {
+  position: relative;
+  display: inline-block;
+}
+
+.ltg-underline-animate::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.35rem;
+  width: 32%;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--ltg-gold),
+    transparent
+  );
+  transform-origin: left;
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.ltg-card-hover-border:hover .ltg-underline-animate::after {
+  transform: scaleX(1);
+}
+
+/* Brand logo cards */
+.ltg-brand-card {
+  background: #050505;
+  border-radius: 0.9rem;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  padding: 1.4rem 1.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: border-color 0.3s ease, transform 0.3s ease,
+    box-shadow 0.3s ease, background 0.3s ease;
+  filter: grayscale(1) invert(1);
+}
+
+.ltg-brand-card:hover {
+  border-color: var(--ltg-gold);
+  background: radial-gradient(circle at top, #181818, #020202);
+  transform: translateY(-6px);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.9);
+  filter: none;
+}
+
+/* CTA Banner */
+.ltg-cta-banner {
+  background: radial-gradient(circle at top, #19130a, #050302);
+  border-block: 1px solid rgba(201, 168, 76, 0.22);
+}
+
+/* FAQ */
+.ltg-accordion .accordion-item {
+  background-color: #050505;
+  border-color: rgba(255, 255, 255, 0.06);
+}
+
+.ltg-accordion .accordion-button {
+  background-color: #050505;
+  color: var(--ltg-text);
+}
+
+.ltg-accordion .accordion-button:not(.collapsed) {
+  color: var(--ltg-gold-soft);
+  box-shadow: none;
+}
+
+.ltg-accordion .accordion-button::after {
+  filter: invert(1);
+}
+
+/* Footer */
+.ltg-footer {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  background: radial-gradient(circle at top, #141414, #020202);
+}
+
+.ltg-footer-link {
+  color: var(--ltg-muted);
+  font-size: 0.9rem;
+}
+
+.ltg-footer-link:hover {
+  color: var(--ltg-gold-soft);
+}
+
+/* Custom cursor */
+.ltg-cursor,
+.ltg-cursor-ring {
+  position: fixed;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+  z-index: 9999;
+  mix-blend-mode: screen;
+}
+
+.ltg-cursor {
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--ltg-gold);
+  transform: translate(-50%, -50%);
+}
+
+.ltg-cursor-ring {
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  border: 1px solid rgba(201, 168, 76, 0.8);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 24px rgba(201, 168, 76, 0.5);
+}
+
+.ltg-cursor-hidden {
+  opacity: 0;
+}
+
+.ltg-cursor-ring-focus {
+  transform: translate(-50%, -50%) scale(0.6);
+  border-width: 2px;
+}
+
+/* Reveal animations base state */
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+}
+
+.reveal-visible {
+  opacity: 1;
+  transform: none;
+}
+
