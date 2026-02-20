@@ -12,6 +12,9 @@ export default function AppShell({ children }) {
   const pathname = usePathname();
 
   useEffect(() => {
+    // Dynamically import Bootstrap JS after mount so collapse handlers attach
+    import("bootstrap/dist/js/bootstrap.bundle.min.js");
+
     const destroyLenis = initLenis();
     const killAnimations = initScrollAnimations();
 

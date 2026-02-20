@@ -1,3 +1,4 @@
+'use client'
 const FAQ_ITEMS = [
   {
     question: "What types of cars do you service?",
@@ -64,21 +65,10 @@ export default function FaqSection() {
                 const headingId = `faq-heading-${index}`;
                 const expanded = index === 0;
                 return (
-                  <div
-                    className="accordion-item"
-                    key={item.question}
-                  >
+                  <div className="accordion-item" key={item.question} >
                     <h2 className="accordion-header" id={headingId}>
-                      <button
-                        className={`accordion-button ${
-                          expanded ? "" : "collapsed"
-                        }`}
-                        type="button"
-                        data-bs-toggle="collapse"
-                        data-bs-target={`#${collapseId}`}
-                        aria-expanded={expanded}
-                        aria-controls={collapseId}
-                      >
+                      <button className={`accordion-button ${ expanded ? "" : "collapsed" }`} type="button" data-bs-toggle="collapse" data-bs-target={`#${collapseId}`}
+                        aria-expanded={expanded} aria-controls={collapseId} >
                         {item.question}
                       </button>
                     </h2>
